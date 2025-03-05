@@ -41,8 +41,6 @@
             for (let i = 0; i < sydanMaara; i++) {
                 luoSydan();
             }
-            luoElain("vuohi");
-            luoElain("leijona");
         });
 
         function luoSydan() {
@@ -65,13 +63,17 @@
             }, 1000);
         }
 
+        // Luodaan vuohi ja leijona heti sivun latautuessa
+        luoElain("vuohi");
+        luoElain("leijona");
+
         function luoElain(tyyppi) {
             const elain = document.createElement('div');
             elain.classList.add('elain');
             if (tyyppi === "vuohi") {
-                elain.textContent = ''; // Vuohi-emoji
+                elain.textContent = String.fromCodePoint(0x1F410); // Vuohi-emoji
             } else {
-                elain.textContent = ''; // Leijona-emoji
+                elain.textContent = String.fromCodePoint(0x1F981); // Leijona-emoji
             }
             elain.style.fontSize = '40px';
             document.body.appendChild(elain);
@@ -79,14 +81,12 @@
             const y = window.innerHeight - 100;
             elain.style.left = x + 'px';
             elain.style.top = y + 'px';
-            setTimeout(() => {
+            // Asetetaan intervalli, jotta eläimet pomppivat jatkuvasti
+            setInterval(() => {
                 elain.style.transform = `translate(${Math.random() * 100 - 50}px, -50px)`;
-                elain.style.opacity = 0;
-            }, 10);
-            setTimeout(() => {
-                elain.remove();
-            }, 1000);
+            }, 1000); // Pomppii kerran sekunnissa
         }
     </script>
 </body>
 </html>
+
