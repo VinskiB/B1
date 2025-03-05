@@ -69,9 +69,9 @@
             const elain = document.createElement('div');
             elain.classList.add('elain');
             if (tyyppi === "vuohi") {
-                elain.textContent = ''; // Vuohi-emoji
+                elain.textContent = String.fromCodePoint(0x1F410); // Vuohi-emoji
             } else {
-                elain.textContent = ''; // Leijona-emoji
+                elain.textContent = String.fromCodePoint(0x1F981); // Leijona-emoji
             }
             elain.style.fontSize = '40px';
             document.body.appendChild(elain);
