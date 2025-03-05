@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Iso Hali</title>
+    <style>
+        #hali-nappi {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .sydan {
+            position: absolute;
+            font-size: 36px;
+            opacity: 1;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <button id="hali-nappi">Iso Hali</button>
+
+
+    <script>
+        const nappi = document.getElementById('hali-nappi');
+
+
+        nappi.addEventListener('click', () => {
+            const sydan = document.createElement('div');
+            sydan.classList.add('sydan');
+            sydan.textContent = '❤️';
+            document.body.appendChild(sydan);
+
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+
+
+            sydan.style.left = x + 'px';
+            sydan.style.top = y + 'px';
+
+
+            setTimeout(() => {
+                sydan.style.transform = `translate(${Math.random() * 200 - 100}px, -200px)`;
+                sydan.style.opacity = 0;
+            }, 10);
+
+
+            setTimeout(() => {
+                sydan.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
