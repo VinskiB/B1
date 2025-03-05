@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Iso Hali</title>
@@ -17,7 +17,6 @@
         }
         .sydan {
             position: absolute;
-            font-size: 36px;
             opacity: 1;
             transition: transform 1s ease-out, opacity 1s ease-out;
         }
@@ -25,37 +24,31 @@
 </head>
 <body>
     <button id="hali-nappi">Iso Hali</button>
-
-
     <script>
         const nappi = document.getElementById('hali-nappi');
-
-
         nappi.addEventListener('click', () => {
-            const sydan = document.createElement('div');
-            sydan.classList.add('sydan');
-            sydan.textContent = '❤️';
-            document.body.appendChild(sydan);
-
-
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-
-
-            sydan.style.left = x + 'px';
-            sydan.style.top = y + 'px';
-
-
-            setTimeout(() => {
-                sydan.style.transform = `translate(${Math.random() * 200 - 100}px, -200px)`;
-                sydan.style.opacity = 0;
-            }, 10);
-
-
-            setTimeout(() => {
-                sydan.remove();
-            }, 1000);
+            const sydanMaara = Math.floor(Math.random() * 16) + 5; // Satunnainen määrä 5-20
+            for (let i = 0; i < sydanMaara; i++) {
+                const sydan = document.createElement('div');
+                sydan.classList.add('sydan');
+                sydan.textContent = '❤️';
+                const koko = Math.random() * 30 + 20; // Satunnainen koko 20-50px
+                sydan.style.fontSize = koko + 'px';
+                document.body.appendChild(sydan);
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                sydan.style.left = x + 'px';
+                sydan.style.top = y + 'px';
+                setTimeout(() => {
+                    sydan.style.transform = `translate(${Math.random() * 200 - 100}px, -200px)`;
+                    sydan.style.opacity = 0;
+                }, 10);
+                setTimeout(() => {
+                    sydan.remove();
+                }, 1000);
+            }
         });
     </script>
 </body>
 </html>
+
